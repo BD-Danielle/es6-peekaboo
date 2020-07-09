@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <script src="peekaboo.js"></script>
+  <title>Document</title>
+</head>
+<script type="text/javascript">
+  $(function () {
+    var peekaboo = new Peekaboo();
+    peekaboo.setArea('target', [['begin', 'end']]);
+
+    window.onscroll = function () {
+      peekaboo.start();
+    }
+  })
+</script>
+<style>
+  .doc {
+    height: 5080px;
+  }
+
+  .div:not(:last-child) {
+    height: 200px;
+    display: block;
+  }
+
+  #target {
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  #begin,
+  #begin1 {
+    background-color: green;
+  }
+
+  #end,
+  #end1 {
+    background-color: yellowgreen;
+  }
+</style>
+
+<body class="PC">
+  <div class="doc">
+    <div class="div" id="begin"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div" id="end"></div>
+    <div class="div"></div>
+  </div>
+  <div class="div" id="target">馬上算</div>
+</body>
+
+</html>

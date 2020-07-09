@@ -95,7 +95,6 @@ class Peekaboo {
       let end = this.div(pos[1]).divOffsetBottom;
       let scrollBarLocation = this.layout().scrolledHeight;
       let unscrollBarLocation = this.layout().unscrolledHeight;
-
       switch (document.body.classList.contains('MOBILE') ? 'MOBILE' : document.body.classList.contains('PC') ? 'PC' : '') {
         case 'PC':
           if (scrollBarLocation >= begin && end <= unscrollBarLocation) {
@@ -108,7 +107,7 @@ class Peekaboo {
           }
           break;
         case 'MOBILE':
-          if (begin <= scrollBarLocation + 45 && end <= unscrollBarLocation) {
+          if (scrollBarLocation + 45 >= begin && end <= unscrollBarLocation) {
             //true
             // cat.show();
             visible.push(1);
@@ -119,7 +118,6 @@ class Peekaboo {
           break;
       }
     }, this);
-
     if (visible.reduce(function (pv, cv) { return pv + cv; }, 0) > 0) {
       cat.show();
     } else {
