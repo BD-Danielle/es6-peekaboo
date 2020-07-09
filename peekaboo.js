@@ -65,7 +65,7 @@ class Peekaboo {
   div(id) {
     let documentHeight = this.layout().documentHeight;
     // divOffsetHeight including padding and border
-    let divOffsetHeight = $(id).outerHeight() || $(id).get(0).offsetHeight;
+    let divOffsetHeight = $(id).outerHeight() || $(id).get(0).offsetHeight || $(id).getBoundingClientRect().height;
     let divOffsetTop =
       (function () {
         let myObj = $(id);
@@ -96,9 +96,9 @@ class Peekaboo {
       let scrollBarLocation = this.layout().scrolledHeight;
       let unscrollBarLocation = this.layout().unscrolledHeight;
 
-      switch (document.body.classList.contains('MOBILE') ? 'MOBILE' : document.body.classList.contains('PC') ?  'PC' : '') {
+      switch (document.body.classList.contains('MOBILE') ? 'MOBILE' : document.body.classList.contains('PC') ? 'PC' : '') {
         case 'PC':
-          if (begin <= scrollBarLocation && end <= unscrollBarLocation) {
+          if (scrollBarLocation >= begin && end <= unscrollBarLocation) {
             //true
             // cat.show();
             visible.push(1);
