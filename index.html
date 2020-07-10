@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="css/reset.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
     crossorigin="anonymous"></script>
-  <script src="peekaboo.js"></script>
+  <script src="js/peekaboo.js"></script>
   <title>Document</title>
 </head>
 <script type="text/javascript">
@@ -14,16 +15,17 @@
     var peekaboo = new Peekaboo();
     peekaboo.setArea('target', [['begin', 'end']]);
 
+    // window.onresize = function(){
+    //   console.log('onresize');
+    //   peekaboo.start();
+    // }
     window.onscroll = function () {
+      console.log('onscroll');
       peekaboo.start();
     }
   })
 </script>
 <style>
-  .doc {
-    height: 5080px;
-  }
-
   .div:not(:last-child) {
     height: 200px;
     display: block;
@@ -35,37 +37,38 @@
     position: fixed;
     bottom: 0;
     background-color: red;
+    opacity: 0.5;
     color: #fff;
     text-align: center;
     font-size: 1rem;
     height: 50px;
     line-height: 50px;
+    z-index: 9;
   }
 
-  #begin,
-  #begin1 {
+  .block1 {
     background-color: green;
+    height: 780px;
   }
 
-  #end,
-  #end1 {
+  .block2{
     background-color: yellowgreen;
+    height: 500px;
   }
 </style>
 
 <body class="PC">
-  <div class="doc">
-    <div class="div" id="begin"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div"></div>
-    <div class="div" id="end"></div>
-    <div class="div"></div>
-  </div>
+  <div class="div" style="background-color: aqua; height: 15px;"></div>
+  <div class="div"></div>
+  <div id="begin"></div>
+  <div class="block1">區塊一</div>
+  <div class="block2">區塊二</div>
+  <div id="end"></div>
+  <div class="div"></div>
+  <div class="div"></div>
+  <div class="div"></div>
+  <div class="div"></div>
+  <div class="div"></div>
   <div class="div" id="target">馬上算</div>
 </body>
 

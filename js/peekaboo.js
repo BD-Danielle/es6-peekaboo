@@ -63,9 +63,10 @@ class Peekaboo {
     };
   }
   div(id) {
+    // if(id == null) return;
     let documentHeight = this.layout().documentHeight;
     // divOffsetHeight including padding and border
-    let divOffsetHeight = $(id).outerHeight() || $(id).get(0).offsetHeight || $(id).getBoundingClientRect().height;
+    let divOffsetHeight = $(id).outerHeight() || $(id).get(0).offsetHeight;
     let divOffsetTop =
       (function () {
         let myObj = $(id);
@@ -95,6 +96,7 @@ class Peekaboo {
       let end = this.div(pos[1]).divOffsetBottom;
       let scrollBarLocation = this.layout().scrolledHeight;
       let unscrollBarLocation = this.layout().unscrolledHeight;
+      console.log(`begin: ${begin}, end: ${end}, scrollBarLocation: ${scrollBarLocation}, unscrolledBarLocation: ${unscrollBarLocation}`);
       switch (document.body.classList.contains('MOBILE') ? 'MOBILE' : document.body.classList.contains('PC') ? 'PC' : '') {
         case 'PC':
           if (scrollBarLocation >= begin && end <= unscrollBarLocation) {
