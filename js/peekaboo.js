@@ -66,11 +66,11 @@
     _this.target = this.query(ele);
     window.addEventListener("scroll", function(){
       areas.forEach(function(e, i){
-        var winLoadedHeight = _this.documentSize().loadedHeight;
-        var winUnloadedHeight = _this.documentSize().selfHeight - winLoadedHeight - _this.windowSize().innerHeight;
+        var DocLoadedHeight = _this.documentSize().loadedHeight;
+        var DocUnloadedHeight = _this.documentSize().selfHeight - DocLoadedHeight - _this.windowSize().innerHeight;
         var pointA = _this.objSize(e[0]).offsetTop;
         var pointB = _this.documentSize().selfHeight - (_this.objSize(e[1]).offsetTop + _this.objSize(e[1]).selfHeight);
-        winLoadedHeight >= pointA && pointB <= winUnloadedHeight ? _this.visible.push(1): _this.visible.push(0);
+        DocLoadedHeight >= pointA && pointB <= DocUnloadedHeight ? _this.visible.push(1): _this.visible.push(0);
         
         _this.resetNo = 0;
         _this.visible.forEach(function (bool) {_this.resetNo += bool;});
