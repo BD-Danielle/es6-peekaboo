@@ -1,75 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <link rel="stylesheet" href="css/reset.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-    crossorigin="anonymous"></script>
-  <script src="js/peekaboo.js"></script>
-  <title>Document</title>
-</head>
-<script type="text/javascript">
-  $(function () {
-    var peekaboo = new Peekaboo();
-    peekaboo.setArea('target', [['begin', 'end']]);
-
-    // window.onresize = function(){
-    //   console.log('onresize');
-    //   peekaboo.start();
-    // }
-    window.onscroll = function () {
-      console.log('onscroll');
-      peekaboo.start();
-    }
-  })
-</script>
-<style>
-  .div:not(:last-child) {
-    height: 200px;
-    display: block;
-  }
-
-  #target {
-    display: none;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    background-color: red;
-    opacity: 0.5;
-    color: #fff;
-    text-align: center;
-    font-size: 1rem;
-    height: 50px;
-    line-height: 50px;
-    z-index: 9;
-  }
-
-  .block1 {
-    background-color: green;
-    height: 780px;
-  }
-
-  .block2{
-    background-color: yellowgreen;
-    height: 500px;
-  }
-</style>
-
-<body class="PC">
-  <div class="div" style="background-color: aqua; height: 15px;"></div>
-  <div class="div"></div>
-  <div id="begin"></div>
-  <div class="block1">區塊一</div>
-  <div class="block2">區塊二</div>
-  <div id="end"></div>
-  <div class="div"></div>
-  <div class="div"></div>
-  <div class="div"></div>
-  <div class="div"></div>
-  <div class="div"></div>
-  <div class="div" id="target">馬上算</div>
-</body>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- Bootstrap CSS 3.3.7 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js'></script><!-- jQuery JS 2.2.4 -->
+    <script src="./js/peekaboo.js"></script>
+    <title>Document</title>
+  </head>
+  <body class="PC">
+    <div class="main-body">
+      <div class="prose-left" itemscope="" itemtype="http://schema.org/Article">
+        <div class="section1">
+          <span class="pinyin">ㄔㄢˊ</span>
+          <h1 itemprop="name">蟬</h1>
+        </div>
+        <div class="section2">
+          <p class="sub"><span>朝代：</span><span itemprop="dateCreated">唐代</span></p>
+          <p class="sub" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span>作者：</span><span itemprop="name"><a title="李商隱簡介" href="/ancient_authors/204">李商隱</a></span></p>
+          <p class="sub"><span>原文：</span></p>
+          <div itemprop="articleBody" class="content">
+            本以高難飽，徒勞恨費聲。五更疏欲斷，一樹碧無情。<br>薄宦梗猶泛，故園蕪已平。煩君最相警，我亦舉家清。
+          </div>
+        </div>
+        <div id="begin" style="width: 100%; height: 2px; background-color: blue; color: blue;">出現</div>
+        <div class="shangxi">
+          <h3>譯文及註釋</h3>
+          <span class="more"><a title="蟬_譯文及註釋" href="/ancient_proses/28282/prose_translations/1389">更多</a></span>
+          <div style="clear:both;">
+            <strong>譯文<br></strong>你棲身高枝之上才難以飽腹，悲鳴傳恨無人理會白費其聲。<br>五更以後疏落之聲幾近斷絕，滿樹碧綠依然如故毫不動情。<br>我官職卑下像桃梗漂流不定，家園長期荒蕪雜草早已長平。<br>煩勞你的鳴叫讓我能夠警醒，我是一貧如洗全家水一樣清。<br><strong>註釋<br></strong>⑴以：因。薄宦：指官職卑微。高難飽：古人認爲蟬棲於高處，餐風飲露，故說“高難飽”。<br>⑵恨費聲：因恨而連聲悲鳴。費，徒然。<br>⑶五更（gēng）：中國古代把夜晚分成五個時段，用鼓打更報時，所以叫“五更”。疏欲斷：指蟬聲稀疏，接近斷絕。<br>⑷碧：綠。
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
+          <span class="more"><a title="蟬_創作背景" href="/ancient_proses/28282/prose_appreciations/9791">更多</a></span>
+          <div style="clear:both;">
+            <p><a href="/ancient_authors/204">李商隱</a>平生曾兩度入官祕書省，但最終未能得志，處境每況愈下。該詩就是表達了他雖仕途不順，卻堅守清高之志。</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">評解</h3>
+          <span class="more"><a title="蟬_評解" href="/ancient_proses/28282/prose_appreciations/1811">更多</a></span>
+          <div style="clear:both;">
+            <p>作者：佚名<br><a href="/ancient_authors/204">李商隱</a>是唐代詠物詩的大家，他的詠物詩大多託物寓慨。這首詩表面寫蟬，實際上是寫自己。<a href="/ancient_authors/274">紀昀</a>說：“前四句寫蟬即自寓，後四句自寫，仍歸到蟬。隱顯分合，章法可玩。”全詩層層深入，闡發主題。“高難飽”，鳴“徒勞”，聲“欲斷”，樹“無情”，怨之深，恨之重，一目瞭然。“五更疏欲斷，一樹碧無情”被譽爲“追魂之筆”，語出憤激卻運思高妙、耐人尋味。後面就直接跳到自身的遭遇上來，直抒胸臆，足見其感情的強烈。最後卻又自然而然地回到蟬身上，首尾圓融，意脈...</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">句解</h3>
+          <span class="more"><a title="蟬_句解" href="/ancient_proses/28282/prose_appreciations/1810">更多</a></span>
+          <div style="clear:both;">
+            <p>作者：佚名<br><strong>本以高難飽，徒勞恨費聲</strong><br>蟬本來就因棲息於高枝，難得一飽；它鳴叫不停，卻不受理睬，真是白白辛苦，怨恨無窮啊。“以”，因。古人誤以爲蟬餐風飲露，所以說“高難飽”。“費聲”，指鳴聲頻頻。<br>就真實情況而言，蟬並非是因身在高處，不肯飛下來乞食而“難飽”；它的鳴叫聲中也沒有什麼恨意，這完全是詩人自己的理解與感受，是其身世之感的寄託。“高”，語義雙關，喻指人的品格高潔。<br>詩人自許清高，不肯屈就，結果只落得生活困頓，這不就是“高難飽”嗎？他曾向令狐綯等當權者陳情，希望得到他們的理解和幫助，可最終還是不被人理會，依舊無法擺脫仕途坎...</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">解釋</h3>
+          <span class="more"><a title="蟬_解釋" href="/ancient_proses/28282/prose_appreciations/1809">更多</a></span>
+          <div style="clear:both;">
+            <p>作者：佚名<br>蟬棲身在高樹上餐風飲露，所以難以果腹；儘管它自命清高也好，含恨哀鳴也罷，這些都是徒勞的，終究不能擺脫生活的清貧，難飽的困境。蟬的鳴聲到五更天亮時，已經稀疏得幾近斷絕了，可是一樹的葉子依然是那樣的蒼翠，並不爲蟬的哀鳴而悲傷蕭疏，顯得是那樣的冷酷，沒有一點一滴地同情。詩人在各地當幕僚，是一個官職卑下的小官，好象大水中的木偶到處漂流。更何況家鄉田園裏的雜草和野地裏的雜草已經連成一片了，人走到地裏已沒有地方落腳了。蟬的操守高潔正與我的廉正清貧相應。煩勞你蟬君最能讓我警醒，我這個與蟬境遇相似的小官，也當堅持操守，玉潔冰清，這讓我不免有了歸鄉的念頭。</p>
+          </div>
+        </div>
+        <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/28282</div>
+      </div>
+      <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
+        <div class="suggest">
+          <div class="common-title">猜你喜歡:</div>
+          <div style="margin-top:2px;">
+            <span><a href="/ancient_proses/query?q%5Bany_category%5D=106">唐詩三百首</a></span>
+            <span><a href="/ancient_proses/query?q%5Bany_category%5D=93">詠物</a></span>
+          </div>
+        </div>
+        <div>
+          <h3><a title="李商隱簡介" href="/ancient_authors/204">李商隱</a></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td style="padding-right:10px;vertical-align:top;"><img width="105" height="150" alt="李商隱" title="李商隱" class="attachment ancient_author avatar" src="/b494f802d1123a28acee77ebc8a1d200f514d187/store/c32a6693bd7be4c266f405ae9c72ece329c349d301759f9618a9bfb4455c/avatar"></td>
+                <td><span>&nbsp;&nbsp;&nbsp;&nbsp;李商隱，字義山，號玉溪生、樊南生，唐代著名詩人，祖籍河內（今河南省焦作市）沁陽，出生於鄭州滎陽。他擅長詩歌寫作，駢文文學價值也很高，是晚唐最出色的詩人之一，和杜牧合稱“小李杜”，與溫庭筠合稱爲“溫李”，因詩文與同時期的段成式、溫庭筠風格相近，且三人都在家族裏排行第十六，故並稱爲“三十六體”。其詩構思新奇，風格穠麗，尤其是一些愛情詩和無題詩寫得纏綿悱惻，優美動人，廣爲傳誦。但部分詩歌過於隱晦迷離，難於索解，至有“詩家總愛西昆好，獨恨無人作鄭箋”之說。因處於牛李黨爭的夾縫之中，一生很不得志。死後葬於家鄉沁陽（今河南焦作市沁陽與博愛縣交界之處）。作品收錄爲《李義山詩集》。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:20px;">
+          <h2 style="font-size:14px;"><a title="李商隱簡介" href="/ancient_authors/204">李商隱</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李商隱詩詞集" ref="nofollow" href="/ancient_authors/204/writing">更多</a></span></h2>
+          <ul class="other-prose">
+            <li><a title="正月崇讓宅" href="/ancient_proses/28904">正月崇讓宅</a></li>
+            <li><a title="蟬" href="/ancient_proses/28282">蟬</a></li>
+            <li><a title="題白石蓮花寄楚公" href="/ancient_proses/28526">題白石蓮花寄楚公</a></li>
+            <li><a title="滯雨" href="/ancient_proses/28900">滯雨</a></li>
+            <li><a title="贈劉司戶蕡" href="/ancient_proses/28285">贈劉司戶蕡</a></li>
+            <li><a title="春日寄懷" href="/ancient_proses/28953">春日寄懷</a></li>
+            <li><a title="隋宮" href="/ancient_proses/28356">隋宮</a></li>
+            <li><a title="晚晴" href="/ancient_proses/28518">晚晴</a></li>
+            <li><a title="寄令狐郎中" href="/ancient_proses/28330">寄令狐郎中</a></li>
+            <li><a title="十一月中旬至扶風界見梅花" href="/ancient_proses/28429">十一月中旬至扶風界見梅花</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="main-body">
+      <div class="prose-left" itemscope="" itemtype="http://schema.org/Article">
+        <div class="section1">
+          <span class="pinyin">
+          ㄅㄧㄝˊ ㄕㄢ ㄙㄥ
+          </span>
+          <h1 itemprop="name">別山僧</h1>
+        </div>
+        <div class="section2">
+          <p class="sub"><span>朝代：</span><span itemprop="dateCreated">唐代</span></p>
+          <p class="sub" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span>作者：</span><span itemprop="name"><a title="李白簡介" href="/ancient_authors/247">李白</a></span></p>
+          <p class="sub"><span>原文：</span></p>
+          <div itemprop="articleBody" class="content">
+            何處名僧到水西，乘舟弄月宿涇溪。平明別我上山去，<br>手攜金策踏雲梯。騰身轉覺三天近，舉足回看萬嶺低。<br>謔浪肯居支遁下，風流還與遠公齊。此度別離何日見，<br>相思一夜暝猿啼。
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3>譯文及註釋</h3>
+          <span class="more"><a title="別山僧_譯文及註釋" href="/ancient_proses/7908/prose_translations/5850">更多</a></span>
+          <div style="clear:both;">
+            <strong>譯文<br></strong>你是何處的名僧來到水西山，乘着扁舟而賞月，宿於涇溪。<br>天亮時分與我只別去上山，手持禪仗去攀登山中蹬道。<br>向上騰起身體頓覺離天很近，擡足向回而視只見衆多的山嶺很低很低。<br>戲謔放浪哪裏肯居支遁之下，風流俊賞與遠公慧遠而齊名。<br>你我此番別離何日才能相見，相思難眠唯聽得猿聲陣陣。<br><strong>註釋<br></strong>水西：即水西山，在涇縣西五里。<br>平明：天明、天亮。<br>金策：禪仗。<br>三天：佛教稱色界、欲界、無色界爲三天。這裏是指高空。<br>支遁：晉代名僧，常隱於剡中，不遊人事。好養鷹馬，而不乘...
+          </div>
+        </div>
+        <div id="end" style="width: 100%; height: 2px; background-color: red; color: red;">消失</div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
+          <span class="more"><a title="別山僧_創作背景" href="/ancient_proses/7908/prose_appreciations/9881">更多</a></span>
+          <div style="clear:both;">
+            <p>《別山僧》是天寶十三、十四載（753—754）間<a href="/ancient_authors/247">李白</a>遊宣州涇縣（今安徽）之水西寺所作。其時李白遊涇縣，於水西寺與寺僧遊，臨別作此詩，李白另有《尋山僧不遇作》詩，題中“山僧”或當與此詩中之“山僧”爲一人。</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">賞析</h3>
+          <span class="more"><a title="別山僧_賞析" href="/ancient_proses/7908/prose_appreciations/9880">更多</a></span>
+          <div style="clear:both;">
+            <p><a href="/ancient_authors/247">李白</a>自從天寶三載辭京還山後，便浪跡天涯，過着遊山覽水，訪僧問道、縱情詩酒的漫遊生活，在天寶末年，他在皖南宣州（今安徵宣城）一帶，盤桓最久，他爲這裏的山水風光和風土人情所迷戀。除了與山翁樵夫、屠沽漁商、隱士逸人相交往外，還常常走觀串寺，廣與和尚道士交朋友。和李白交遊的僧人道士，一般都是些精通佛玄、能詩善文的詩僧、學問僧或有學識才情的道士。此詩中所贈別的“山僧”，即是這樣的一位多才多藝、道行高深的名僧。<br>水西寺是唐代一所著名的寺院。此寺座落在安徽涇縣城西。據《江南通志》記載，水西寺建在涇縣西五里的水西山上。這裏...</p>
+          </div>
+        </div>
+        <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/7908</div>
+      </div>
+      <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
+        <div class="suggest">
+          <div class="common-title">猜你喜歡:</div>
+          <div style="margin-top:2px;">
+          </div>
+        </div>
+        <div>
+          <h3><a title="李白簡介" href="/ancient_authors/247">李白</a></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td style="padding-right:10px;vertical-align:top;"><img width="105" height="150" alt="李白" title="李白" class="attachment ancient_author avatar" src="/7f17caf6b93726c1f2c33c7b1dd532fc6001f8f0/store/297091fafd63861f4b88fac15749fc13f89467fdacc1d194ab29937b4dca/avatar"></td>
+                <td><span>&nbsp;&nbsp;&nbsp;&nbsp;李白（701年－762年），字太白，號青蓮居士，唐朝浪漫主義詩人，被後人譽爲“詩仙”。祖籍隴西成紀(待考)，出生於西域碎葉城，4歲再隨父遷至劍南道綿州。李白存世詩文千餘篇，有《李太白集》傳世。762年病逝，享年61歲。其墓在今安徽當塗，四川江油、湖北安陸有紀念館。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:20px;">
+          <h2 style="font-size:14px;"><a title="李白簡介" href="/ancient_authors/247">李白</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李白詩詞集" ref="nofollow" href="/ancient_authors/247/writing">更多</a></span></h2>
+          <ul class="other-prose">
+            <li><a title="別山僧" href="/ancient_proses/7908">別山僧</a></li>
+            <li><a title="黃葛篇" href="/ancient_proses/7596">黃葛篇</a></li>
+            <li><a title="贈柳圓" href="/ancient_proses/7774">贈柳圓</a></li>
+            <li><a title="送楊山人歸嵩山" href="/ancient_proses/7965">送楊山人歸嵩山</a></li>
+            <li><a title="望終南山寄紫閣隱者" href="/ancient_proses/7834">望終南山寄紫閣隱者</a></li>
+            <li><a title="過崔八丈水亭" href="/ancient_proses/8122">過崔八丈水亭</a></li>
+            <li><a title="來日大難" href="/ancient_proses/7601">來日大難</a></li>
+            <li><a title="口號吳王美人半醉" href="/ancient_proses/8296">口號吳王美人半醉</a></li>
+            <li><a title="秋夜板橋浦泛月獨酌懷謝脁" href="/ancient_proses/8154">秋夜板橋浦泛月獨酌懷謝脁</a></li>
+            <li><a title="戲贈鄭溧陽" href="/ancient_proses/7747">戲贈鄭溧陽</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-body">
+      <div class="prose-left" itemscope="" itemtype="http://schema.org/Article">
+        <div class="section1">
+          <span class="pinyin">
+          ㄅㄧㄝˊ ㄕㄢ ㄙㄥ
+          </span>
+          <h1 itemprop="name">別山僧</h1>
+        </div>
+        <div class="section2">
+          <p class="sub"><span>朝代：</span><span itemprop="dateCreated">唐代</span></p>
+          <p class="sub" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span>作者：</span><span itemprop="name"><a title="李白簡介" href="/ancient_authors/247">李白</a></span></p>
+          <p class="sub"><span>原文：</span></p>
+          <div itemprop="articleBody" class="content">
+            何處名僧到水西，乘舟弄月宿涇溪。平明別我上山去，<br>手攜金策踏雲梯。騰身轉覺三天近，舉足回看萬嶺低。<br>謔浪肯居支遁下，風流還與遠公齊。此度別離何日見，<br>相思一夜暝猿啼。
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3>譯文及註釋</h3>
+          <span class="more"><a title="別山僧_譯文及註釋" href="/ancient_proses/7908/prose_translations/5850">更多</a></span>
+          <div style="clear:both;">
+            <strong>譯文<br></strong>你是何處的名僧來到水西山，乘着扁舟而賞月，宿於涇溪。<br>天亮時分與我只別去上山，手持禪仗去攀登山中蹬道。<br>向上騰起身體頓覺離天很近，擡足向回而視只見衆多的山嶺很低很低。<br>戲謔放浪哪裏肯居支遁之下，風流俊賞與遠公慧遠而齊名。<br>你我此番別離何日才能相見，相思難眠唯聽得猿聲陣陣。<br><strong>註釋<br></strong>水西：即水西山，在涇縣西五里。<br>平明：天明、天亮。<br>金策：禪仗。<br>三天：佛教稱色界、欲界、無色界爲三天。這裏是指高空。<br>支遁：晉代名僧，常隱於剡中，不遊人事。好養鷹馬，而不乘...
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
+          <span class="more"><a title="別山僧_創作背景" href="/ancient_proses/7908/prose_appreciations/9881">更多</a></span>
+          <div style="clear:both;">
+            <p>《別山僧》是天寶十三、十四載（753—754）間<a href="/ancient_authors/247">李白</a>遊宣州涇縣（今安徽）之水西寺所作。其時李白遊涇縣，於水西寺與寺僧遊，臨別作此詩，李白另有《尋山僧不遇作》詩，題中“山僧”或當與此詩中之“山僧”爲一人。</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">賞析</h3>
+          <span class="more"><a title="別山僧_賞析" href="/ancient_proses/7908/prose_appreciations/9880">更多</a></span>
+          <div style="clear:both;">
+            <p><a href="/ancient_authors/247">李白</a>自從天寶三載辭京還山後，便浪跡天涯，過着遊山覽水，訪僧問道、縱情詩酒的漫遊生活，在天寶末年，他在皖南宣州（今安徵宣城）一帶，盤桓最久，他爲這裏的山水風光和風土人情所迷戀。除了與山翁樵夫、屠沽漁商、隱士逸人相交往外，還常常走觀串寺，廣與和尚道士交朋友。和李白交遊的僧人道士，一般都是些精通佛玄、能詩善文的詩僧、學問僧或有學識才情的道士。此詩中所贈別的“山僧”，即是這樣的一位多才多藝、道行高深的名僧。<br>水西寺是唐代一所著名的寺院。此寺座落在安徽涇縣城西。據《江南通志》記載，水西寺建在涇縣西五里的水西山上。這裏...</p>
+          </div>
+        </div>
+        <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/7908</div>
+      </div>
+      <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
+        <div class="suggest">
+          <div class="common-title">猜你喜歡:</div>
+          <div style="margin-top:2px;">
+          </div>
+        </div>
+        <div>
+          <h3><a title="李白簡介" href="/ancient_authors/247">李白</a></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td style="padding-right:10px;vertical-align:top;"><img width="105" height="150" alt="李白" title="李白" class="attachment ancient_author avatar" src="/7f17caf6b93726c1f2c33c7b1dd532fc6001f8f0/store/297091fafd63861f4b88fac15749fc13f89467fdacc1d194ab29937b4dca/avatar"></td>
+                <td><span>&nbsp;&nbsp;&nbsp;&nbsp;李白（701年－762年），字太白，號青蓮居士，唐朝浪漫主義詩人，被後人譽爲“詩仙”。祖籍隴西成紀(待考)，出生於西域碎葉城，4歲再隨父遷至劍南道綿州。李白存世詩文千餘篇，有《李太白集》傳世。762年病逝，享年61歲。其墓在今安徽當塗，四川江油、湖北安陸有紀念館。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:20px;">
+          <h2 style="font-size:14px;"><a title="李白簡介" href="/ancient_authors/247">李白</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李白詩詞集" ref="nofollow" href="/ancient_authors/247/writing">更多</a></span></h2>
+          <ul class="other-prose">
+            <li><a title="別山僧" href="/ancient_proses/7908">別山僧</a></li>
+            <li><a title="黃葛篇" href="/ancient_proses/7596">黃葛篇</a></li>
+            <li><a title="贈柳圓" href="/ancient_proses/7774">贈柳圓</a></li>
+            <li><a title="送楊山人歸嵩山" href="/ancient_proses/7965">送楊山人歸嵩山</a></li>
+            <li><a title="望終南山寄紫閣隱者" href="/ancient_proses/7834">望終南山寄紫閣隱者</a></li>
+            <li><a title="過崔八丈水亭" href="/ancient_proses/8122">過崔八丈水亭</a></li>
+            <li><a title="來日大難" href="/ancient_proses/7601">來日大難</a></li>
+            <li><a title="口號吳王美人半醉" href="/ancient_proses/8296">口號吳王美人半醉</a></li>
+            <li><a title="秋夜板橋浦泛月獨酌懷謝脁" href="/ancient_proses/8154">秋夜板橋浦泛月獨酌懷謝脁</a></li>
+            <li><a title="戲贈鄭溧陽" href="/ancient_proses/7747">戲贈鄭溧陽</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-body">
+      <div class="prose-left" itemscope="" itemtype="http://schema.org/Article">
+        <div class="section1">
+          <span class="pinyin">
+          ㄅㄧㄝˊ ㄕㄢ ㄙㄥ
+          </span>
+          <h1 itemprop="name">別山僧</h1>
+        </div>
+        <div class="section2">
+          <p class="sub"><span>朝代：</span><span itemprop="dateCreated">唐代</span></p>
+          <p class="sub" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span>作者：</span><span itemprop="name"><a title="李白簡介" href="/ancient_authors/247">李白</a></span></p>
+          <p class="sub"><span>原文：</span></p>
+          <div itemprop="articleBody" class="content">
+            何處名僧到水西，乘舟弄月宿涇溪。平明別我上山去，<br>手攜金策踏雲梯。騰身轉覺三天近，舉足回看萬嶺低。<br>謔浪肯居支遁下，風流還與遠公齊。此度別離何日見，<br>相思一夜暝猿啼。
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3>譯文及註釋</h3>
+          <span class="more"><a title="別山僧_譯文及註釋" href="/ancient_proses/7908/prose_translations/5850">更多</a></span>
+          <div style="clear:both;">
+            <strong>譯文<br></strong>你是何處的名僧來到水西山，乘着扁舟而賞月，宿於涇溪。<br>天亮時分與我只別去上山，手持禪仗去攀登山中蹬道。<br>向上騰起身體頓覺離天很近，擡足向回而視只見衆多的山嶺很低很低。<br>戲謔放浪哪裏肯居支遁之下，風流俊賞與遠公慧遠而齊名。<br>你我此番別離何日才能相見，相思難眠唯聽得猿聲陣陣。<br><strong>註釋<br></strong>水西：即水西山，在涇縣西五里。<br>平明：天明、天亮。<br>金策：禪仗。<br>三天：佛教稱色界、欲界、無色界爲三天。這裏是指高空。<br>支遁：晉代名僧，常隱於剡中，不遊人事。好養鷹馬，而不乘...
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
+          <span class="more"><a title="別山僧_創作背景" href="/ancient_proses/7908/prose_appreciations/9881">更多</a></span>
+          <div style="clear:both;">
+            <p>《別山僧》是天寶十三、十四載（753—754）間<a href="/ancient_authors/247">李白</a>遊宣州涇縣（今安徽）之水西寺所作。其時李白遊涇縣，於水西寺與寺僧遊，臨別作此詩，李白另有《尋山僧不遇作》詩，題中“山僧”或當與此詩中之“山僧”爲一人。</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">賞析</h3>
+          <span class="more"><a title="別山僧_賞析" href="/ancient_proses/7908/prose_appreciations/9880">更多</a></span>
+          <div style="clear:both;">
+            <p><a href="/ancient_authors/247">李白</a>自從天寶三載辭京還山後，便浪跡天涯，過着遊山覽水，訪僧問道、縱情詩酒的漫遊生活，在天寶末年，他在皖南宣州（今安徵宣城）一帶，盤桓最久，他爲這裏的山水風光和風土人情所迷戀。除了與山翁樵夫、屠沽漁商、隱士逸人相交往外，還常常走觀串寺，廣與和尚道士交朋友。和李白交遊的僧人道士，一般都是些精通佛玄、能詩善文的詩僧、學問僧或有學識才情的道士。此詩中所贈別的“山僧”，即是這樣的一位多才多藝、道行高深的名僧。<br>水西寺是唐代一所著名的寺院。此寺座落在安徽涇縣城西。據《江南通志》記載，水西寺建在涇縣西五里的水西山上。這裏...</p>
+          </div>
+        </div>
+        <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/7908</div>
+      </div>
+      <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
+        <div class="suggest">
+          <div class="common-title">猜你喜歡:</div>
+          <div style="margin-top:2px;">
+          </div>
+        </div>
+        <div>
+          <h3><a title="李白簡介" href="/ancient_authors/247">李白</a></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td style="padding-right:10px;vertical-align:top;"><img width="105" height="150" alt="李白" title="李白" class="attachment ancient_author avatar" src="/7f17caf6b93726c1f2c33c7b1dd532fc6001f8f0/store/297091fafd63861f4b88fac15749fc13f89467fdacc1d194ab29937b4dca/avatar"></td>
+                <td><span>&nbsp;&nbsp;&nbsp;&nbsp;李白（701年－762年），字太白，號青蓮居士，唐朝浪漫主義詩人，被後人譽爲“詩仙”。祖籍隴西成紀(待考)，出生於西域碎葉城，4歲再隨父遷至劍南道綿州。李白存世詩文千餘篇，有《李太白集》傳世。762年病逝，享年61歲。其墓在今安徽當塗，四川江油、湖北安陸有紀念館。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:20px;">
+          <h2 style="font-size:14px;"><a title="李白簡介" href="/ancient_authors/247">李白</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李白詩詞集" ref="nofollow" href="/ancient_authors/247/writing">更多</a></span></h2>
+          <ul class="other-prose">
+            <li><a title="別山僧" href="/ancient_proses/7908">別山僧</a></li>
+            <li><a title="黃葛篇" href="/ancient_proses/7596">黃葛篇</a></li>
+            <li><a title="贈柳圓" href="/ancient_proses/7774">贈柳圓</a></li>
+            <li><a title="送楊山人歸嵩山" href="/ancient_proses/7965">送楊山人歸嵩山</a></li>
+            <li><a title="望終南山寄紫閣隱者" href="/ancient_proses/7834">望終南山寄紫閣隱者</a></li>
+            <li><a title="過崔八丈水亭" href="/ancient_proses/8122">過崔八丈水亭</a></li>
+            <li><a title="來日大難" href="/ancient_proses/7601">來日大難</a></li>
+            <li><a title="口號吳王美人半醉" href="/ancient_proses/8296">口號吳王美人半醉</a></li>
+            <li><a title="秋夜板橋浦泛月獨酌懷謝脁" href="/ancient_proses/8154">秋夜板橋浦泛月獨酌懷謝脁</a></li>
+            <li><a title="戲贈鄭溧陽" href="/ancient_proses/7747">戲贈鄭溧陽</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-body">
+      <div class="prose-left" itemscope="" itemtype="http://schema.org/Article">
+        <div class="section1">
+          <span class="pinyin">
+          ㄅㄧㄝˊ ㄕㄢ ㄙㄥ
+          </span>
+          <h1 itemprop="name">別山僧</h1>
+        </div>
+        <div class="section2">
+          <p class="sub"><span>朝代：</span><span itemprop="dateCreated">唐代</span></p>
+          <p class="sub" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span>作者：</span><span itemprop="name"><a title="李白簡介" href="/ancient_authors/247">李白</a></span></p>
+          <p class="sub"><span>原文：</span></p>
+          <div itemprop="articleBody" class="content">
+            何處名僧到水西，乘舟弄月宿涇溪。平明別我上山去，<br>手攜金策踏雲梯。騰身轉覺三天近，舉足回看萬嶺低。<br>謔浪肯居支遁下，風流還與遠公齊。此度別離何日見，<br>相思一夜暝猿啼。
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3>譯文及註釋</h3>
+          <span class="more"><a title="別山僧_譯文及註釋" href="/ancient_proses/7908/prose_translations/5850">更多</a></span>
+          <div style="clear:both;">
+            <strong>譯文<br></strong>你是何處的名僧來到水西山，乘着扁舟而賞月，宿於涇溪。<br>天亮時分與我只別去上山，手持禪仗去攀登山中蹬道。<br>向上騰起身體頓覺離天很近，擡足向回而視只見衆多的山嶺很低很低。<br>戲謔放浪哪裏肯居支遁之下，風流俊賞與遠公慧遠而齊名。<br>你我此番別離何日才能相見，相思難眠唯聽得猿聲陣陣。<br><strong>註釋<br></strong>水西：即水西山，在涇縣西五里。<br>平明：天明、天亮。<br>金策：禪仗。<br>三天：佛教稱色界、欲界、無色界爲三天。這裏是指高空。<br>支遁：晉代名僧，常隱於剡中，不遊人事。好養鷹馬，而不乘...
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
+          <span class="more"><a title="別山僧_創作背景" href="/ancient_proses/7908/prose_appreciations/9881">更多</a></span>
+          <div style="clear:both;">
+            <p>《別山僧》是天寶十三、十四載（753—754）間<a href="/ancient_authors/247">李白</a>遊宣州涇縣（今安徽）之水西寺所作。其時李白遊涇縣，於水西寺與寺僧遊，臨別作此詩，李白另有《尋山僧不遇作》詩，題中“山僧”或當與此詩中之“山僧”爲一人。</p>
+          </div>
+        </div>
+        <div class="shangxi">
+          <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">賞析</h3>
+          <span class="more"><a title="別山僧_賞析" href="/ancient_proses/7908/prose_appreciations/9880">更多</a></span>
+          <div style="clear:both;">
+            <p><a href="/ancient_authors/247">李白</a>自從天寶三載辭京還山後，便浪跡天涯，過着遊山覽水，訪僧問道、縱情詩酒的漫遊生活，在天寶末年，他在皖南宣州（今安徵宣城）一帶，盤桓最久，他爲這裏的山水風光和風土人情所迷戀。除了與山翁樵夫、屠沽漁商、隱士逸人相交往外，還常常走觀串寺，廣與和尚道士交朋友。和李白交遊的僧人道士，一般都是些精通佛玄、能詩善文的詩僧、學問僧或有學識才情的道士。此詩中所贈別的“山僧”，即是這樣的一位多才多藝、道行高深的名僧。<br>水西寺是唐代一所著名的寺院。此寺座落在安徽涇縣城西。據《江南通志》記載，水西寺建在涇縣西五里的水西山上。這裏...</p>
+          </div>
+        </div>
+        <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/7908</div>
+      </div>
+      <div id="begin1" style="width: 100%; height: 2px; background-color: blue; color: blue">出現</div>
+      <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
+        <div class="suggest">
+          <div class="common-title">猜你喜歡:</div>
+          <div style="margin-top:2px;">
+          </div>
+        </div>
+        <div>
+          <h3><a title="李白簡介" href="/ancient_authors/247">李白</a></h3>
+          <table>
+            <tbody>
+              <tr>
+                <td style="padding-right:10px;vertical-align:top;"><img width="105" height="150" alt="李白" title="李白" class="attachment ancient_author avatar" src="/7f17caf6b93726c1f2c33c7b1dd532fc6001f8f0/store/297091fafd63861f4b88fac15749fc13f89467fdacc1d194ab29937b4dca/avatar"></td>
+                <td><span>&nbsp;&nbsp;&nbsp;&nbsp;李白（701年－762年），字太白，號青蓮居士，唐朝浪漫主義詩人，被後人譽爲“詩仙”。祖籍隴西成紀(待考)，出生於西域碎葉城，4歲再隨父遷至劍南道綿州。李白存世詩文千餘篇，有《李太白集》傳世。762年病逝，享年61歲。其墓在今安徽當塗，四川江油、湖北安陸有紀念館。</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="end1" style="width: 100%; height: 2px; background-color: red; color: red;">消失</div>
+        <div style="margin-top:20px;">
+          <h2 style="font-size:14px;"><a title="李白簡介" href="/ancient_authors/247">李白</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李白詩詞集" ref="nofollow" href="/ancient_authors/247/writing">更多</a></span></h2>
+          <ul class="other-prose">
+            <li><a title="別山僧" href="/ancient_proses/7908">別山僧</a></li>
+            <li><a title="黃葛篇" href="/ancient_proses/7596">黃葛篇</a></li>
+            <li><a title="贈柳圓" href="/ancient_proses/7774">贈柳圓</a></li>
+            <li><a title="送楊山人歸嵩山" href="/ancient_proses/7965">送楊山人歸嵩山</a></li>
+            <li><a title="望終南山寄紫閣隱者" href="/ancient_proses/7834">望終南山寄紫閣隱者</a></li>
+            <li><a title="過崔八丈水亭" href="/ancient_proses/8122">過崔八丈水亭</a></li>
+            <li><a title="來日大難" href="/ancient_proses/7601">來日大難</a></li>
+            <li><a title="口號吳王美人半醉" href="/ancient_proses/8296">口號吳王美人半醉</a></li>
+            <li><a title="秋夜板橋浦泛月獨酌懷謝脁" href="/ancient_proses/8154">秋夜板橋浦泛月獨酌懷謝脁</a></li>
+            <li><a title="戲贈鄭溧陽" href="/ancient_proses/7747">戲贈鄭溧陽</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="target" style="display: none; width: 100%; height: 50px; line-height: 50px; font-size: 1.6rem; color: white; text-align: center; background-color: red; position: fixed; bottom: 0; ">馬上算</div>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        var peekaboo = new Peekaboo();
+        peekaboo.start('#target', [['#begin', '#end'], ['#begin1', '#end1']]);
+      })
+    </script>
+  </body>
 </html>
