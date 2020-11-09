@@ -1,7 +1,7 @@
 /*
  * ========================================================================
  * peekaboo 1.0
- * vertical accordion & content toggle component on the website
+ * The target was hidden or shown when window scroll to the specified area
  * YILING CHEN
  * Copyright 2020, MIT License
  * How to use it:
@@ -11,6 +11,7 @@
  * })
  * ========================================================================
  */
+
 (function($, window, document){
   // if(!$) throw newError('jQuery is not defined');
   function Peekaboo(){
@@ -40,9 +41,9 @@
   Peekaboo.prototype.windowSize = function(){
     // if(!window) throw newError('window is not defined');
     return {
-      // 'innerWidth': window.innerWidth,    // width without scrollbar-x
+      'innerWidth': window.innerWidth,    // width without scrollbar-x
       'innerHeight': window.innerHeight,  // height without scrollbar-y
-      // 'outerWidth': window.outerWidth,    // width with scrollbar-x
+      'outerWidth': window.outerWidth,    // width with scrollbar-x
       'outerHeight': window.outerHeight   // height without scrollbar-y
     };
   }
@@ -55,12 +56,17 @@
     };
   }
   Peekaboo.prototype.objSize = function(ele){
+    var getOffset = function(element, horizontal = false){
+      if(!element) return 0;
+      return getOffset(element.offsetParent, horizontal) + (horizontal ? element.offsetLeft : element.offsetTop);
+    };
     return {
       'selfHeight': this.query(ele).offsetHeight,
-      'offsetTop': this.query(ele).offsetTop
+      'selfWidth': this.query(ele).offsetWidth,
+      'offsetTop': getOffset(this.query(ele)),
+      'offsetLeft': getOffset(this.query(ele), true)
     }
   }
-  
   Peekaboo.prototype.start = function(ele, areas){
     var _this = this;
     _this.target = this.query(ele);
