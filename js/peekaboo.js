@@ -56,14 +56,14 @@
     };
   }
   Peekaboo.prototype.objSize = function(ele){
-    var getOffset = function(element, horizontal = false){
+    var getOffset = function(element, horizontal){
       if(!element) return 0;
       return getOffset(element.offsetParent, horizontal) + (horizontal ? element.offsetLeft : element.offsetTop);
     };
     return {
       'selfHeight': this.query(ele).offsetHeight,
       'selfWidth': this.query(ele).offsetWidth,
-      'offsetTop': getOffset(this.query(ele)),
+      'offsetTop': getOffset(this.query(ele), false),
       'offsetLeft': getOffset(this.query(ele), true)
     }
   }
