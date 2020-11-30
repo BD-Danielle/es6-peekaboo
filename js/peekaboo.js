@@ -82,7 +82,7 @@
         _this.visible.forEach(function (bool) {_this.resetNo += bool;});
         _this.resetNo > 0 ? _this.target.style.display = 'block': _this.target.style.display = 'none';
         
-        if(_this.visible.length >= 2) {_this.visible.shift();}
+        if(_this.visible.length >= 1) {_this.visible.shift();}
       })
     })
   }
