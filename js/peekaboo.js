@@ -67,24 +67,25 @@
       'offsetLeft': getOffset(this.query(ele), true)
     }
   }
+  Peekaboo.prototype.forLoops = function(ele, areas){
+    var _this = this;
+    areas.forEach(function(e, i){
+      var DocLoadedHeight = _this.documentSize().loadedHeight;
+      var DocUnloadedHeight = _this.documentSize().selfHeight - DocLoadedHeight - _this.windowSize().innerHeight;
+      var pointA = _this.objSize(e[0]).offsetTop;
+      var pointB = _this.documentSize().selfHeight - (_this.objSize(e[1]).offsetTop + _this.objSize(e[1]).selfHeight);
+      DocLoadedHeight >= pointA && pointB <= DocUnloadedHeight ? _this.visible.push(1): _this.visible.push(0);
+      
+      _this.resetNo = 0;
+      _this.visible.forEach(function (bool) {_this.resetNo += bool;});
+      _this.resetNo > 0 ? _this.query(ele).style.display = 'block': _this.query(ele).style.display = 'none';
+      if(_this.visible.length >= areas.length) {_this.visible.shift();}
+    })
+  }
   Peekaboo.prototype.start = function(ele, areas){
     var _this = this;
-    _this.target = this.query(ele);
-    window.addEventListener("scroll", function(){
-      areas.forEach(function(e, i){
-        var DocLoadedHeight = _this.documentSize().loadedHeight;
-        var DocUnloadedHeight = _this.documentSize().selfHeight - DocLoadedHeight - _this.windowSize().innerHeight;
-        var pointA = _this.objSize(e[0]).offsetTop;
-        var pointB = _this.documentSize().selfHeight - (_this.objSize(e[1]).offsetTop + _this.objSize(e[1]).selfHeight);
-        DocLoadedHeight >= pointA && pointB <= DocUnloadedHeight ? _this.visible.push(1): _this.visible.push(0);
-        
-        _this.resetNo = 0;
-        _this.visible.forEach(function (bool) {_this.resetNo += bool;});
-        _this.resetNo > 0 ? _this.target.style.display = 'block': _this.target.style.display = 'none';
-        
-        if(_this.visible.length >= 1) {_this.visible.shift();}
-      })
-    })
+    window.addEventListener("DOMContentLoaded", function(){_this.forLoops(ele, areas);})
+    window.addEventListener("scroll", function(){_this.forLoops(ele, areas);})
   }
 })(jQuery, window, document);
 // window.addEventListener('DOMContentLoaded', function () {
