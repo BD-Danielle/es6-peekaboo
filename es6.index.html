@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <script src="./js/es6.peekaboo.js"></script>
+  <title>es6.peekaboo</title>
+</head>
+<style>
+  ul > li{
+    width: 25%; height: 40px; background-color: grey; text-align: center;
+    line-height: 40px; cursor: pointer;
+  }
+  #g{
+    width: 100%; height: 60px; position: fixed;  bottom: 0; background-color: pink;
+    display: flex; justify-content: center; align-items: center;
+  }
+</style>
+<body>
+  <div style="width: 70%; display: block; position: fixed; top: 0;">
+    <ul style="display: flex;">
+      <li id="a"><a href="">A標籤</a></li>
+      <li id="b"><a href="">B標籤</a></li>
+      <li id="c"><a href="">C標籤</a></li>
+      <li id="d"><a href="">D標籤</a></li>
+      <li id="e"><a href="">E標籤</a></li>
+    </ul>
+  </div>
+  <div style="width: 70%;">
+    <div id="begin1" style="height: 650px; background-color: red; margin-top: 40px">begin1</div><div id="end1"></div>
+    <div id="begin2" style="height: 700px; background-color: orange;">begin2</div><div id="end2"></div>
+    <div id="begin3" style="height: 750px; background-color: yellow;">begin3</div><div id="end3"></div>
+    <div id="begin4" style="height: 800px; background-color: green;">begin4</div><div id="end4"></div>
+    <div id="begin5" style="height: 850px; background-color: blue;">begin5</div><div id="end5"></div>
+  </div>
+  <div id="g" style="display: none;">我是置底浮水印</div>
+</body>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var displayButton = function(){
+      // console.log('this: ', this);
+      this.visible ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: 
+      document.querySelector(this.selector).style.backgroundColor = "grey";
+
+    }
+    var changeBgColor = function(){
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: 
+      document.querySelector(this.selector).style.backgroundColor = "grey";
+    }
+    var arrObjs = [
+      {selector: '#a', areas: [['#begin1', '#end1']], cb: changeBgColor, bgColor: "red"},
+      {selector: '#b', areas: [['#begin2', '#end2']], cb: changeBgColor, bgColor: "orange"},
+      {selector: '#c', areas: [['#begin3', '#end3']], cb: displayButton, bgColor: "yellow"},
+      {selector: '#d', areas: [['#begin4', '#end4']], cb: changeBgColor, bgColor: "green"},
+      {selector: '#e', areas: [['#begin5', '#end5']], cb: changeBgColor, bgColor: "blue"}
+    ];
+    var peekaboo = new Peekaboo(arrObjs);
+    peekaboo.start();
+  })
+</script>
+</html>
