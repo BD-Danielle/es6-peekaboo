@@ -9,6 +9,9 @@
   <title>es6.peekaboo</title>
 </head>
 <style>
+  div{
+    margin: 0;
+  }
   ul > li{
     width: 25%; height: 40px; background-color: grey; text-align: center;
     line-height: 40px; cursor: pointer;
@@ -34,26 +37,29 @@
     <div id="begin3" style="height: 750px; background-color: yellow;">begin3</div><div id="end3"></div>
     <div id="begin4" style="height: 800px; background-color: green;">begin4</div><div id="end4"></div>
     <div id="begin5" style="height: 850px; background-color: blue;">begin5</div><div id="end5"></div>
+    <div id="begin6" style="height: 850px; background-color: purple;">begin6</div><div id="end6"></div>
   </div>
   <div id="g" style="display: none;">我是置底浮水印</div>
 </body>
 <script>
   window.addEventListener('DOMContentLoaded', function () {
     var displayButton = function(){
-      // console.log('this: ', this);
-      this.visible ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
-      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: 
-      document.querySelector(this.selector).style.backgroundColor = "grey";
+      console.log('this: ', this);
+      this.arrVisible.forEach(c=>{
+        c ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
+        c ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
+      })
 
     }
     var changeBgColor = function(){
-      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: 
-      document.querySelector(this.selector).style.backgroundColor = "grey";
+      this.arrVisible.forEach(c=>{
+        c ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
+      })
     }
     var arrObjs = [
       {selector: '#a', areas: [['#begin1', '#end1']], cb: changeBgColor, bgColor: "red"},
       {selector: '#b', areas: [['#begin2', '#end2']], cb: changeBgColor, bgColor: "orange"},
-      {selector: '#c', areas: [['#begin3', '#end3']], cb: displayButton, bgColor: "yellow"},
+      {selector: '#c', areas: [['#begin3', '#end3'], ["#begin6", "#end6"]], cb: displayButton, bgColor: "yellow"},
       {selector: '#d', areas: [['#begin4', '#end4']], cb: changeBgColor, bgColor: "green"},
       {selector: '#e', areas: [['#begin5', '#end5']], cb: changeBgColor, bgColor: "blue"}
     ];

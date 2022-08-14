@@ -58,14 +58,17 @@ class Peekaboo{
   }
 
   forEach(){
-    this.arrObjs.forEach(c=>{
-      c.areas.forEach(c1=>{
-        c.visible = false;
+    this.arrObjs.forEach((c, i)=>{
+      c.arrVisible = [];
+      c.areas.forEach((c1, i1)=>{
         if(this.docSize.docScrollTop >= this.objSize(c1[0]).offsetTop && (this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight) <= this.docSize.docScrollBottom){
-          c.visible = true;
+          c.arrVisible[i1] = true;
+        }else{
+          c.arrVisible[i1] = false;
         }
-        c.cb && c.cb();
       })
+      if (c.areas.length >= c.arrVisible.length && c.arrVisible.indexOf(true) !== -1) c.arrVisible = [true];
+      c.cb && c.cb();
     })
   }
   start(){
