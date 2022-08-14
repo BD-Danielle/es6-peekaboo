@@ -16,13 +16,17 @@
     width: 25%; height: 40px; background-color: grey; text-align: center;
     line-height: 40px; cursor: pointer;
   }
+  ul > li > a{
+    text-decoration: none;
+    color: white;
+  }
   #g{
     width: 100%; height: 60px; position: fixed;  bottom: 0; background-color: pink;
     display: flex; justify-content: center; align-items: center;
   }
 </style>
 <body>
-  <div style="width: 70%; display: block; position: fixed; top: 0;">
+  <div style="width: 100%; display: block; position: fixed; top: 0;">
     <ul style="display: flex;">
       <li id="a"><a href="">A標籤</a></li>
       <li id="b"><a href="">B標籤</a></li>
@@ -31,8 +35,8 @@
       <li id="e"><a href="">E標籤</a></li>
     </ul>
   </div>
-  <div style="width: 70%;">
-    <div id="begin1" style="height: 650px; background-color: red; margin-top: 40px">begin1</div><div id="end1"></div>
+  <div style="width: 100%;">
+    <div id="begin1" style="height: 650px; background-color: red;">begin1</div><div id="end1"></div>
     <div id="begin2" style="height: 700px; background-color: orange;">begin2</div><div id="end2"></div>
     <div id="begin3" style="height: 750px; background-color: yellow;">begin3</div><div id="end3"></div>
     <div id="begin4" style="height: 800px; background-color: green;">begin4</div><div id="end4"></div>
