@@ -45,16 +45,12 @@
   window.addEventListener('DOMContentLoaded', function () {
     var displayButton = function(){
       console.log('this: ', this);
-      this.arrVisible.forEach(c=>{
-        c ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
-        c ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
-      })
+      this.visible ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
 
     }
     var changeBgColor = function(){
-      this.arrVisible.forEach(c=>{
-        c ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
-      })
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
     }
     var arrObjs = [
       {selector: '#a', areas: [['#begin1', '#end1']], cb: changeBgColor, bgColor: "red"},

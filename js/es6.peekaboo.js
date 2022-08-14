@@ -58,24 +58,23 @@ class Peekaboo{
   }
 
   forEach(){
-    this.arrObjs.forEach((c, i)=>{
+    this.arrObjs.forEach(c=>{
       c.arrVisible = [];
       c.areas.forEach((c1, i1)=>{
         if(this.docSize.docScrollTop >= this.objSize(c1[0]).offsetTop && (this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight) <= this.docSize.docScrollBottom){
           c.arrVisible[i1] = true;
+          c.visible = true;
         }else{
           c.arrVisible[i1] = false;
+          c.visible = false;
         }
       })
-      if (c.areas.length >= c.arrVisible.length && c.arrVisible.indexOf(true) !== -1) c.arrVisible = [true];
+      if (c.areas.length >= c.arrVisible.length && c.arrVisible.some(c2=>c2==true)) c.visible = true;
+      if (c.areas.length >= c.arrVisible.length && c.arrVisible.every(c2=>c2==false)) c.visible = false;
       c.cb && c.cb();
     })
   }
   start(){
-    ["DOMContentLoaded", "scroll"].forEach(c=>{
-      window.addEventListener(c, ()=>{
-        this.forEach();
-      })
-    });
+    ["DOMContentLoaded", "scroll"].forEach(c=>window.addEventListener(c, ()=>this.forEach()));
   }
 }
