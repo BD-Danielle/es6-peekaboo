@@ -61,7 +61,7 @@ class Peekaboo{
   }
   vertical(c1, offsetTop = 0){
     let pointA = this.objSize(c1[0]).offsetTop - offsetTop;
-    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight + offsetTop;
+    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop + offsetTop - this.objSize(c1[1]).offsetHeight;
     return this.docSize.docScrollTop >= pointA && pointB <= this.docSize.docScrollBottom;
   }
   forEach(){
