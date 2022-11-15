@@ -60,9 +60,9 @@ class Peekaboo{
     return this.winSize.innerWidth <= (this.winSize.innerWidth - this.objSize(c1[0]).offsetLeft + this.objSize(c1[1]).offsetWidth);
   }
   vertical(c1, offsetTop = 0){
-    let pointA = this.objSize(c1[0]).offsetTop;
-    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight;
-    return this.docSize.docScrollTop >= pointA - offsetTop && pointB <= this.docSize.docScrollBottom - offsetTop;
+    let pointA = this.objSize(c1[0]).offsetTop - offsetTop;
+    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight + offsetTop;
+    return this.docSize.docScrollTop >= pointA && pointB <= this.docSize.docScrollBottom;
   }
   forEach(){
     this.arrObjs.forEach(c=>{
