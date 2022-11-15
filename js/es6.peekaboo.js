@@ -56,12 +56,20 @@ class Peekaboo{
       "offsetWidth": offsetWidth
     };
   }
-
+  horizontal(c1){
+    return this.winSize.innerWidth <= (this.winSize.innerWidth - this.objSize(c1[0]).offsetLeft + this.objSize(c1[1]).offsetWidth);
+  }
+  vertical(c1, offsetTop = 0){
+    let pointA = this.objSize(c1[0]).offsetTop;
+    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight;
+    return this.docSize.docScrollTop >= pointA - offsetTop && pointB <= this.docSize.docScrollBottom - offsetTop;
+  }
   forEach(){
     this.arrObjs.forEach(c=>{
       c.arrVisible = [];
       c.areas.forEach((c1, i1)=>{
-        if(this.docSize.docScrollTop >= this.objSize(c1[0]).offsetTop && (this.docSize.docHeight - this.objSize(c1[1]).offsetTop - this.objSize(c1[1]).offsetHeight) <= this.docSize.docScrollBottom){
+        c.horzVisible = c.horizontal && this.horizontal(c1) ? false: true; // if horizontal
+        if(this.vertical(c1, c.offsetTop)){
           c.arrVisible[i1] = true;
           c.visible = true;
         }else{
@@ -75,6 +83,6 @@ class Peekaboo{
     })
   }
   start(){
-    ["DOMContentLoaded", "scroll"].forEach(c=>window.addEventListener(c, ()=>this.forEach()));
+    ["DOMContentLoaded", "scroll", "resize"].forEach(c=>window.addEventListener(c, ()=>this.forEach()));
   }
 }
