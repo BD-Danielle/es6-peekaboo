@@ -40,7 +40,7 @@ class Peekaboo{
     };
   }
   
-  objSize(node){
+  getObjSize(node){
     let offsetLeft = 0, offsetTop = 0;
     var node = document.querySelector(node);
     let offsetHeight = node.offsetHeight, offsetWidth = node.offsetWidth;
@@ -56,21 +56,23 @@ class Peekaboo{
       "offsetWidth": offsetWidth
     };
   }
-  horizontal(c1){
-    return this.winSize.innerWidth <= (this.winSize.innerWidth - this.objSize(c1[0]).offsetLeft + this.objSize(c1[1]).offsetWidth);
+  isHorizontal(c1){
+    return this.winSize.innerWidth <= (this.winSize.innerWidth - this.getObjSize(c1[0]).offsetLeft + this.getObjSize(c1[1]).offsetWidth);
   }
-  vertical(c1, offsetTop = 0){
-    let pointA = this.objSize(c1[0]).offsetTop - offsetTop;
-    let pointB = this.docSize.docHeight - this.objSize(c1[1]).offsetTop + offsetTop - this.objSize(c1[1]).offsetHeight;
+  isVertical(c1, c){
+    let offsetTop = c ? this.getObjSize(c).offsetHeight: 0;
+    let pointA = this.getObjSize(c1[0]).offsetTop - offsetTop;
+    let pointB = this.docSize.docHeight - this.getObjSize(c1[1]).offsetTop + offsetTop - this.getObjSize(c1[1]).offsetHeight;
     return this.docSize.docScrollTop >= pointA && pointB <= this.docSize.docScrollBottom;
   }
   forEach(){
     this.arrObjs.forEach(c=>{
       c.arrVisible = [];
       c.areas.forEach((c1, i1)=>{
-        c.horzVisible = c.horizontal && this.horizontal(c1) ? false: true; // if horizontal
-        if(this.vertical(c1, c.offsetTop)){
+        c.horizVisible = c.horizontal && this.isHorizontal(c1) ? false: true; // if horizontal
+        if(this.isVertical(c1, c.selector)){
           c.arrVisible[i1] = true;
+          c.backgroundColor ? document.querySelector(c.selector).style.backgroundColor = c.bgColor : '';
           c.visible = true;
         }else{
           c.arrVisible[i1] = false;
@@ -84,5 +86,17 @@ class Peekaboo{
   }
   start(){
     ["DOMContentLoaded", "scroll", "resize"].forEach(c=>window.addEventListener(c, ()=>this.forEach()));
+  }
+  click(args){
+    if(Object.prototype.toString.call(args) !== "[object Array]") return;
+    [...args].forEach(c=>{
+      let selector = document.querySelector(c.selector);
+      let offsetTop = this.getObjSize(c.areas[0][0]).offsetTop;
+      selector.addEventListener("click", function(event){
+        event.preventDefault();
+        this.style.backgroundColor = c.backgroundColor;
+        window.scrollTo(0, offsetTop);
+      })
+    })
   }
 }

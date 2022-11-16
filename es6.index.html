@@ -9,8 +9,12 @@
   <title>es6.peekaboo</title>
 </head>
 <style>
+  html{
+    scroll-behavior: smooth;
+  }
   div{
     margin: 0;
+    box-sizing: border-box;
   }
   ul > li{
     width: 25%; height: 40px; background-color: grey; text-align: center;
@@ -39,7 +43,7 @@
       <li id="e"><a href="">E標籤</a></li>
     </ul>
     <div style="width: inherit;">
-      <div id="begin1" style="padding-top: 40px; height: 650px; background-color: red;">begin1</div><div id="end1"></div>
+      <div id="begin1" style="margin-top: 40px; height: 650px; background-color: red;">begin1</div><div id="end1"></div>
       <div id="begin2" style="height: 700px; background-color: orange;">begin2</div><div id="end2"></div>
       <div id="begin3" style="height: 750px; background-color: yellow;">begin3</div><div id="end3"></div>
       <div id="begin4" style="height: 800px; background-color: green;">begin4</div><div id="end4"></div>
@@ -53,28 +57,25 @@
   window.addEventListener('DOMContentLoaded', function () {
     var displayButton = function(){
       this.visible ? document.querySelector("#g").style.display = "flex": document.querySelector("#g").style.display = "none";
-      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.backgroundColor: document.querySelector(this.selector).style.backgroundColor = "grey";
     }
     var changeBgColor = function(){
-      document.querySelector(this.selector).addEventListener("click", function(event){
-        event.preventDefault();
-        console.log('event: ', event);
-      }, true)
-      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.bgColor: document.querySelector(this.selector).style.backgroundColor = "grey";
+      this.visible ? document.querySelector(this.selector).style.backgroundColor = this.backgroundColor: document.querySelector(this.selector).style.backgroundColor = "grey";
     }
     var toggleWatermark = function(){
-      this.horzVisible ? document.querySelector(this.selector).style.visibility = "visible": document.querySelector(this.selector).style.visibility = "hidden";
+      this.horizVisible ? document.querySelector(this.selector).style.visibility = "visible": document.querySelector(this.selector).style.visibility = "hidden";
     }
     var arrObjs = [
-      {selector: '#a', areas: [['#begin1', '#end1']], offsetTop: 40, cb: changeBgColor, bgColor: "red"},
-      {selector: '#b', areas: [['#begin2', '#end2']], offsetTop: 40, cb: changeBgColor, bgColor: "orange"},
-      {selector: '#c', areas: [['#begin3', '#end3'], ["#begin6", "#end6"]], offsetTop: 40, cb: displayButton, bgColor: "yellow"},
-      {selector: '#d', areas: [['#begin4', '#end4']], offsetTop: 40, cb: changeBgColor, bgColor: "green"},
-      {selector: '#e', areas: [['#begin5', '#end5']], offsetTop: 40, cb: changeBgColor, bgColor: "blue"},
-      {selector: '#f', areas: [['#begin7', "#f"]], cb: toggleWatermark, horizontal: true}
+      {areas: [['#begin1', '#end1']], selector: '#a', cb: changeBgColor, backgroundColor: "red"},
+      {areas: [['#begin2', '#end2']], selector: '#b', cb: changeBgColor, backgroundColor: "orange"},
+      {areas: [['#begin3', '#end3'], ["#begin6", "#end6"]], selector: '#c', cb: displayButton, backgroundColor: "yellow"},
+      {areas: [['#begin4', '#end4']], selector: '#d', cb: changeBgColor, backgroundColor: "green"},
+      {areas: [['#begin5', '#end5']], selector: '#e', cb: changeBgColor, backgroundColor: "blue"},
+      {areas: [['#begin7', "#f"]], selector: '#f', cb: toggleWatermark, horizontal: true}
     ];
     var peekaboo = new Peekaboo(arrObjs);
     peekaboo.start();
+    peekaboo.click(arrObjs.filter((c)=>c.selector!=="#f"));
   })
 </script>
 </html>
