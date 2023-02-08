@@ -1,6 +1,6 @@
 /*
  * ========================================================================
- * peekaboo 1.1
+ * peekaboo 1.2
  * The target was hidden or shown when window scroll to the specified area
  * YILING CHEN
  * Copyright 2022, MIT License
@@ -59,8 +59,8 @@ class Peekaboo{
   isHorizontal(c1){
     return this.winSize.innerWidth <= (this.winSize.innerWidth - this.getObjSize(c1[0]).offsetLeft + this.getObjSize(c1[1]).offsetWidth);
   }
-  isVertical(c1, c){
-    let offsetTop = c ? this.getObjSize(c).offsetHeight: 0;
+  isVertical(c1, c, offsetExtra){
+    let offsetTop = c ? this.getObjSize(c).offsetHeight + offsetExtra ? offsetExtra: 0: 0;
     let pointA = this.getObjSize(c1[0]).offsetTop - offsetTop;
     let pointB = this.docSize.docHeight - this.getObjSize(c1[1]).offsetTop + offsetTop - this.getObjSize(c1[1]).offsetHeight;
     return this.docSize.docScrollTop >= pointA && pointB <= this.docSize.docScrollBottom;
@@ -70,9 +70,8 @@ class Peekaboo{
       c.arrVisible = [];
       c.areas.forEach((c1, i1)=>{
         c.horizVisible = c.horizontal && this.isHorizontal(c1) ? false: true; // if horizontal
-        if(this.isVertical(c1, c.selector)){
+        if(this.isVertical(c1, c.selector, c.offsetExtra)){
           c.arrVisible[i1] = true;
-          c.backgroundColor ? document.querySelector(c.selector).style.backgroundColor = c.bgColor : '';
           c.visible = true;
         }else{
           c.arrVisible[i1] = false;
@@ -81,7 +80,7 @@ class Peekaboo{
       })
       if (c.areas.length >= c.arrVisible.length && c.arrVisible.some(c2=>c2==true)) c.visible = true;
       if (c.areas.length >= c.arrVisible.length && c.arrVisible.every(c2=>c2==false)) c.visible = false;
-      c.cb && c.cb();
+      c.callback && c.callback();
     })
   }
   start(){
@@ -92,10 +91,10 @@ class Peekaboo{
     [...args].forEach(c=>{
       let selector = document.querySelector(c.selector);
       let offsetTop = this.getObjSize(c.areas[0][0]).offsetTop;
+      let offsetExtra = c.offsetExtra ? c.offsetExtra: 0;
       selector.addEventListener("click", function(event){
         event.preventDefault();
-        this.style.backgroundColor = c.backgroundColor;
-        window.scrollTo(0, offsetTop);
+        window.scrollTo(0, offsetTop - offsetExtra);
       })
     })
   }

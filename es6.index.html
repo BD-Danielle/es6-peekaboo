@@ -66,12 +66,12 @@
       this.horizVisible ? document.querySelector(this.selector).style.visibility = "visible": document.querySelector(this.selector).style.visibility = "hidden";
     }
     var arrObjs = [
-      {areas: [['#begin1', '#end1']], selector: '#a', cb: changeBgColor, backgroundColor: "red"},
-      {areas: [['#begin2', '#end2']], selector: '#b', cb: changeBgColor, backgroundColor: "orange"},
-      {areas: [['#begin3', '#end3'], ["#begin6", "#end6"]], selector: '#c', cb: displayButton, backgroundColor: "yellow"},
-      {areas: [['#begin4', '#end4']], selector: '#d', cb: changeBgColor, backgroundColor: "green"},
-      {areas: [['#begin5', '#end5']], selector: '#e', cb: changeBgColor, backgroundColor: "blue"},
-      {areas: [['#begin7', "#f"]], selector: '#f', cb: toggleWatermark, horizontal: true}
+      {areas: [['#begin1', '#end1']], selector: '#a', offsetExtra: 40.1, callback: changeBgColor, backgroundColor: "red"},
+      {areas: [['#begin2', '#end2']], selector: '#b', offsetExtra: 40.1, callback: changeBgColor, backgroundColor: "orange"},
+      {areas: [['#begin3', '#end3'], ["#begin6", "#end6"]], selector: '#c', offsetExtra: 40.1, callback: displayButton, backgroundColor: "yellow"},
+      {areas: [['#begin4', '#end4']], selector: '#d', offsetExtra: 40.1, callback: changeBgColor, backgroundColor: "green"},
+      {areas: [['#begin5', '#end5']], selector: '#e', offsetExtra: 40.1, callback: changeBgColor, backgroundColor: "blue"},
+      {areas: [['#begin7', "#f"]], selector: '#f', offsetExtra: 40.1, callback: toggleWatermark, horizontal: true}
     ];
     var peekaboo = new Peekaboo(arrObjs);
     peekaboo.start();
