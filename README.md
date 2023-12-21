@@ -1,19 +1,66 @@
-# Babel setup
-### 第一步：在開發目錄下，初始化npm，並輸入相關屬性值，例如創建者署名
+
+# Peekaboo 2.0
+
+## Overview
+`Peekaboo` is a JavaScript class that toggles the visibility of a target element based on the user's scroll position relative to specified areas. It is a useful tool for creating dynamic and interactive web pages.
+
+### Author
+YILING CHEN
+
+### License
+MIT License, 2020.
+
+## Installation
+
+Include the `Peekaboo` JavaScript file in your project to get started.
+
+```html
+<script src="es6.peekaboo.bundle.2.1.0.js"></script>
 ```
-npm init
+
+## Usage
+
+To use `Peekaboo`, instantiate the class and call the `start` method with the target element and the begin and end areas.
+
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+  const peekaboo = new Peekaboo();
+  peekaboo.start('#target', [['#begin', '#end'], ['#begin1', '#end1']]);
+});
 ```
-### 第二步：touch一個副檔名為babelrc的檔案，並建立內容如下：
+
+### Features
+
+- **Dynamic Visibility:** Change the visibility of elements based on scroll position.
+- **Multiple Triggers:** Supports multiple begin and end points for triggering visibility.
+- **Easy Integration:** Simple to integrate with existing web pages.
+
+## API Reference
+
+### Constructor: `Peekaboo()`
+
+Initializes a new `Peekaboo` instance.
+
+### Methods
+
+- `query(selector)`: Queries a single element from the DOM.
+- `getElementSize(selector)`: Computes the size of an element.
+- `updateVisibility(ele, areas)`: Toggles the visibility of an element.
+- `start(ele, areas)`: Initializes the functionality with event listeners.
+
+## Example
+
+A practical example of how to implement `Peekaboo` in a webpage.
+
+```html
+<!-- Your example HTML -->
 ```
-{
-  "presets": ["es2015", "stage-2"]
-}
+
+```javascript
+// Your example JavaScript
 ```
-### 第三步：安裝所需的套件，無需安裝至 --save-dev
-```
-npm install babel-cli babel-register babel-preset-es2015 babel-preset-stage-2
-```
-### 第四步：babel你指定的檔案，並輸出至指定位置：
-```
-babel peekaboo.js -o babel/peekaboo.babel.js
-```
+
+## Contributing
+
+Feel free to contribute to the project! Check out the [issues page](link-to-your-issues) for more information.
+
