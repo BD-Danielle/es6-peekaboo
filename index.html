@@ -7,8 +7,8 @@
     <!-- Bootstrap CSS 3.3.7 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js'></script><!-- jQuery JS 2.2.4 -->
-    <script src="./webpack/es6.peekaboo.bundle2.1.0.js"></script>
-    <title>Document</title>
+    <script src="./webpack/es6.peekaboo.bundle2.1.1.js"></script>
+    <title>es6.peekaboo2.1.1</title>
   </head>
   <body class="PC">
     <div class="main-body">
@@ -25,7 +25,7 @@
             本以高難飽，徒勞恨費聲。五更疏欲斷，一樹碧無情。<br>薄宦梗猶泛，故園蕪已平。煩君最相警，我亦舉家清。
           </div>
         </div>
-        <div id="begin" style="width: 100%; height: 2px; background-color: blue; color: blue;">出現</div>
+        <h1 id="begin" style="width: 100%; height: 2px; background-color: blue; color: blue;">過我出現</h1>
         <div class="shangxi">
           <h3>譯文及註釋</h3>
           <span class="more"><a title="蟬_譯文及註釋" href="/ancient_proses/28282/prose_translations/1389">更多</a></span>
@@ -124,7 +124,7 @@
             <strong>譯文<br></strong>你是何處的名僧來到水西山，乘着扁舟而賞月，宿於涇溪。<br>天亮時分與我只別去上山，手持禪仗去攀登山中蹬道。<br>向上騰起身體頓覺離天很近，擡足向回而視只見衆多的山嶺很低很低。<br>戲謔放浪哪裏肯居支遁之下，風流俊賞與遠公慧遠而齊名。<br>你我此番別離何日才能相見，相思難眠唯聽得猿聲陣陣。<br><strong>註釋<br></strong>水西：即水西山，在涇縣西五里。<br>平明：天明、天亮。<br>金策：禪仗。<br>三天：佛教稱色界、欲界、無色界爲三天。這裏是指高空。<br>支遁：晉代名僧，常隱於剡中，不遊人事。好養鷹馬，而不乘...
           </div>
         </div>
-        <div id="end" style="width: 100%; height: 2px; background-color: red; color: red;">消失</div>
+        <h1 id="end" style="width: 100%; height: 2px; background-color: red; color: red;">過我消失</h1>
         <div class="shangxi">
           <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">創作背景</h3>
           <span class="more"><a title="別山僧_創作背景" href="/ancient_proses/7908/prose_appreciations/9881">更多</a></span>
@@ -351,6 +351,7 @@
             <p>《別山僧》是天寶十三、十四載（753—754）間<a href="/ancient_authors/247">李白</a>遊宣州涇縣（今安徽）之水西寺所作。其時李白遊涇縣，於水西寺與寺僧遊，臨別作此詩，李白另有《尋山僧不遇作》詩，題中“山僧”或當與此詩中之“山僧”爲一人。</p>
           </div>
         </div>
+        <h1 id="end1" style="width: 100%; height: 2px; background-color: red; color: red;">過我消失1</h1>
         <div class="shangxi">
           <h3 style="border-bottom: 1px solid rgb(141, 6, 31); --darkreader-inline-border-bottom:#ca092c;" data-darkreader-inline-border-bottom="">賞析</h3>
           <span class="more"><a title="別山僧_賞析" href="/ancient_proses/7908/prose_appreciations/9880">更多</a></span>
@@ -360,7 +361,7 @@
         </div>
         <div class="original_url">转载请注明:原文链接 - https://fanti.dugushici.com/ancient_proses/7908</div>
       </div>
-      <div id="begin1" style="width: 100%; height: 2px; background-color: blue; color: blue">出現</div>
+      <h1 id="begin1" style="width: 100%; height: 2px; background-color: blue; color: blue">過我出現1</h1>
       <div class="right" style="width: 400px; background: url(&quot;/assets/rightbg2.gif&quot;); --darkreader-inline-bgcolor: initial;" data-darkreader-inline-bgcolor="">
         <div class="suggest">
           <div class="common-title">猜你喜歡:</div>
@@ -378,7 +379,6 @@
             </tbody>
           </table>
         </div>
-        <div id="end1" style="width: 100%; height: 2px; background-color: red; color: red;">消失</div>
         <div style="margin-top:20px;">
           <h2 style="font-size:14px;"><a title="李白簡介" href="/ancient_authors/247">李白</a>其他詩詞<span style="font-size:12px;float:right;margin-right:10px;"><a title="李白詩詞集" ref="nofollow" href="/ancient_authors/247/writing">更多</a></span></h2>
           <ul class="other-prose">
@@ -398,7 +398,7 @@
     </div>
     <div id="target" style="display: none; width: 100%; height: 50px; line-height: 50px; font-size: 1.6rem; color: white; text-align: center; background-color: red; position: fixed; bottom: 0; ">馬上算</div>
     <script>
-      window.addEventListener('DOMContentLoaded', function () {
+      window.addEventListener('load', function () {
         var peekaboo = new Peekaboo();
         peekaboo.start('#target', [['#begin', '#end'], ['#begin1', '#end1']]);
       })
