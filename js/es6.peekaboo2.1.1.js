@@ -1,4 +1,5 @@
 class Peekaboo {
+  static version = "2.1.1";
   constructor() {}
 
   // Query a single element from the DOM
