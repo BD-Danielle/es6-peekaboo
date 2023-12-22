@@ -1,29 +1,29 @@
 
-# Peekaboo 2.0
+# Peekaboo 2.1.1
 
 ## Overview
-`Peekaboo` is a JavaScript class that toggles the visibility of a target element based on the user's scroll position relative to specified areas. It is a useful tool for creating dynamic and interactive web pages.
+`Peekaboo` is an advanced JavaScript class designed to manage the visibility of elements on a webpage based on their position relative to the viewport during scrolling. This version introduces performance improvements and additional functionality.
 
 ### Author
 YILING CHEN
 
 ### License
-MIT License, 2020.
+MIT License.
 
 ## Installation
 
-Include the `Peekaboo` JavaScript file in your project to get started.
+Include the `Peekaboo` class in your project to enhance element visibility control.
 
 ```html
-<script src="es6.peekaboo.bundle.2.1.0.js"></script>
+<script src="es6.peekaboo.bundle.2.1.1.js"></script>
 ```
 
 ## Usage
 
-To use `Peekaboo`, instantiate the class and call the `start` method with the target element and the begin and end areas.
+Instantiate `Peekaboo` and use the `start` method to define the target element and the areas that control its visibility.
 
 ```javascript
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const peekaboo = new Peekaboo();
   peekaboo.start('#target', [['#begin', '#end'], ['#begin1', '#end1']]);
 });
@@ -31,36 +31,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### Features
 
-- **Dynamic Visibility:** Change the visibility of elements based on scroll position.
-- **Multiple Triggers:** Supports multiple begin and end points for triggering visibility.
-- **Easy Integration:** Simple to integrate with existing web pages.
+- **Improved Performance:** Includes a debounce function to optimize scroll event handling.
+- **Enhanced Visibility Checks:** More accurate detection of element visibility within the viewport.
+- **Dynamic Content Control:** Manage the display of content dynamically as the user scrolls.
 
 ## API Reference
 
-### Constructor: `Peekaboo()`
+### Properties
 
-Initializes a new `Peekaboo` instance.
+- `version`: Indicates the current version of the class.
 
 ### Methods
 
 - `query(selector)`: Queries a single element from the DOM.
-- `getElementSize(selector)`: Computes the size of an element.
-- `updateVisibility(ele, areas)`: Toggles the visibility of an element.
+- `documentSize()`: Returns the full height of the document and the current scroll position.
+- `objSize(ele)`: Computes the size and position of an element.
+- `isElementVisible(area)`: Checks if an element is visible within the viewport.
+- `updateVisibility(ele, areas)`: Updates the visibility of an element based on its position.
 - `start(ele, areas)`: Initializes the functionality with event listeners.
+- `debounce(func, wait)`: Debounces a function to limit the rate at which it fires.
 
 ## Example
 
-A practical example of how to implement `Peekaboo` in a webpage.
+An example implementation of `Peekaboo` is provided to demonstrate its usage.
 
 ```html
-<!-- Your example HTML -->
+<!-- Example HTML code -->
 ```
 
 ```javascript
-// Your example JavaScript
+// Example JavaScript code
 ```
 
 ## Contributing
 
-Feel free to contribute to the project! Check out the [issues page](link-to-your-issues) for more information.
+Contributions are welcome. Please refer to the [issues page](link-to-your-issues) for more details.
 
