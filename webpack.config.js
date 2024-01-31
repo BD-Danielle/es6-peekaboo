@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   mode: 'production', // development
-  entry: './js/es6.peekaboo2.1.1.js',
+  entry: './js/es6.peekaboo2.1.2.js',
   output: {
     path: path.resolve(__dirname, './webpack'),
-    filename: 'es6.peekaboo.bundle2.1.1.js'
+    filename: 'es6.peekaboo.bundle2.1.2.js'
   },
   module: {
     rules: [
