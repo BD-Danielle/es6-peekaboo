@@ -1,6 +1,6 @@
 {
   "name": "peekaboo",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Toggles visibility of a target element when scrolling to specified areas",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:BD-Danielle/es6-peekaboo.git"
+    "url": "https://repo.heroit.io/angel.chen/es6-peekaboo.git"
   },
   "author": "CYL",
   "license": "ISC",

@@ -1,5 +1,4 @@
-
-# Peekaboo 2.1.1
+# Peekaboo 2.2.0
 
 ## Overview
 `Peekaboo` is an advanced JavaScript class designed to manage the visibility of elements on a webpage based on their position relative to the viewport during scrolling. This version introduces performance improvements and additional functionality.
@@ -15,7 +14,7 @@ MIT License.
 Include the `Peekaboo` class in your project to enhance element visibility control.
 
 ```html
-<script src="es6.peekaboo.bundle.2.1.1.js"></script>
+<script src="es6.peekaboo.bundle.2.2.0.js"></script>
 ```
 
 ## Usage
