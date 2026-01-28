@@ -34,15 +34,12 @@ class Peekaboo {
   // Get size and position of an element
   objSize(ele) {
     const element = this.query(ele);
-    let getOffset = function(element, horizontal){
-      if(!element) return 0;
-      return getOffset(element.offsetParent, horizontal) + (horizontal ? element.offsetLeft : element.offsetTop);
-    };
+    const rect = element.getBoundingClientRect();
     return {
-      height: element.offsetHeight,
-      width: element.offsetWidth,
-      top: getOffset(element, false),
-      left: getOffset(element, true)
+      height: rect.height,
+      width: rect.width,
+      top: rect.top + window.scrollY,
+      left: rect.left + window.scrollX
     };
   }
 
@@ -66,7 +63,7 @@ class Peekaboo {
   updateVisibility(ele, areas) {
     const element = this.query(ele);
     const isVisible = areas.some(area => this.isElementVisible(area));
-    
+
     if (this.options.fadeEffect) {
       element.style.transition = 'opacity 0.3s';
       element.style.opacity = isVisible ? '1' : '0';
@@ -81,7 +78,7 @@ class Peekaboo {
   // 添加節流函數
   throttle(func, limit) {
     let inThrottle;
-    return function(...args) {
+    return function (...args) {
       if (!inThrottle) {
         func.apply(this, args);
         inThrottle = true;
@@ -93,7 +90,7 @@ class Peekaboo {
   // 修改 start 方法
   start(ele, areas) {
     if (!ele || !areas) throw new Error('Invalid arguments for Peekaboo.start');
-    
+
     const updateFunc = this.throttle(() => this.updateVisibility(ele, areas), 100);
     document.addEventListener("DOMContentLoaded", updateFunc);
     window.addEventListener("scroll", updateFunc);
